@@ -21,7 +21,10 @@ LABEL org.opencontainers.image.authors="Abe Masahiro <pen@thcomp.org>" \
 RUN apk add --no-cache \
             h2o \
             perl \
-            php-cgi
+            php-cgi \
+            php-mbstring \
+            php-bcmath \
+            php-ctype
 
 COPY --from=builder /pukiwiki /var/www
 COPY rootfs /
