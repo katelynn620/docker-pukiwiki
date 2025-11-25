@@ -9,9 +9,9 @@ RUN mv "pukiwiki-$tag" pukiwiki
 
 WORKDIR /pukiwiki
 RUN rm -f *.txt *.zip
-RUN mkdir -p .orig/conf .orig/data
+RUN mkdir -p .orig/conf
 RUN for i in `find * -maxdepth 0 -name '*.ini.php'`; do mv $i .orig/conf/; ln -s /ext/conf/$i; done
-RUN for i in `find * -maxdepth 0 -type d -perm 2777`; do mv $i .orig/data/; ln -s /ext/data/$i; done
+RUN cp -r wiki .orig/ && rm -rf wiki && ln -s /ext/wiki wiki
 
 
 FROM alpine:3.18
